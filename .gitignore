@@ -1,0 +1,13 @@
+/node_modules/
+/coverage/
+/.cache/
+/work/
+/*.tgz
+/.env
+/.env.*
+!/.env.example
+*.log
+.DS_Store
+Thumbs.db
+
+# lib/ is intentionally tracked so GitHub plugin installation needs no build hook.

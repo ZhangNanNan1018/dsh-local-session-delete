@@ -1,0 +1,51 @@
+{
+  "name": "dsh-local-session-delete",
+  "version": "1.0.0",
+  "description": "在本机 DeepSeek Harness 中管理并永久删除对话及其专属附件",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZhangNanNan1018/dsh-local-session-delete.git"
+  },
+  "homepage": "https://github.com/ZhangNanNan1018/dsh-local-session-delete#readme",
+  "bugs": { "url": "https://github.com/ZhangNanNan1018/dsh-local-session-delete/issues" },
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": ["lib", "cordis.patch.yml", "README.md", "LICENSE", "THIRD_PARTY_NOTICES", "docs/images/session-manager.png"],
+  "engines": { "node": ">=22", "dsh": "=0.2.1-rc.2" },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5",
+    "@deepseek-ai/dsh-typert-protocol": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-llm-deepseek": "0.2.1-rc.2"
+  },
+  "peerDependenciesMeta": { "@deepseek-ai/dsh-llm-deepseek": { "optional": true } },
+  "dependencies": { "zod": "4.4.3" },
+  "devDependencies": { "esbuild": "^0.25.0" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node --check src/index.js && node --check src/wire.js && node --check src/service.js && node --check src/adapter.js",
+    "test": "node --test"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-api-gateway",
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ],
+      "external": ["@deepseek-ai/dsh-client-ui-primitives"]
+    }
+  }
+}

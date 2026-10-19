@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.png binary
+
+# Preserve bundled dependencies' template-string whitespace; review source changes.
+lib/*.js whitespace=-blank-at-eol linguist-generated=true

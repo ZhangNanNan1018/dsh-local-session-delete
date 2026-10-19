@@ -1,0 +1,3 @@
+- insert:
+    - id: local-session-delete
+      name: dsh-local-session-delete
